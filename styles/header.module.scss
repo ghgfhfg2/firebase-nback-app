@@ -1,0 +1,22 @@
+@import "scss-common.scss";
+
+.header {
+  height: 50px;
+  padding: 0 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  @include flex($j: center);
+  .btn-menu {
+    padding: 0;
+    border: none;
+    background: none;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    .ic {
+      font-size: 20px;
+    }
+  }
+}

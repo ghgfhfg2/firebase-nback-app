@@ -1,0 +1,699 @@
+@import "scss-common.scss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
+body {
+  font-family: "Space Grotesk";
+}
+#content {
+  width: 100%;
+}
+
+html {
+  --antd-wave-shadow-color: #16ce81;
+}
+::selection {
+  background: $p-color;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+  background: $p-color;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+  background: $p-color;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+//가이드
+.guide_box {
+  padding: 1rem;
+  font-size: 12px;
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .guide_img {
+    width: 100%;
+    margin: 20px 0 30px 0;
+    text-align: center;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+//click
+.pointer {
+  display: block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: $p-color;
+  position: fixed;
+  margin-left: -35px;
+  margin-top: -35px;
+  animation: scale 0.5s forwards;
+  z-index: -1;
+}
+@keyframes scale {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+//메인화면
+.main_content {
+  @include flex($j: center, $d: column);
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  padding: 0 2rem 33% 2rem;
+  .logo {
+    width: 70%;
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+  ul {
+    @include flex($d: column);
+    width: 100%;
+    li {
+      width: 100%;
+      height: 40px;
+      border-radius: 10px;
+      background-color: $p-color;
+      margin-bottom: 10px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+      &.disable {
+        background-color: #aaa;
+      }
+      a {
+        @include flex($j: center);
+        width: 100%;
+        height: 100%;
+        color: #fff;
+      }
+    }
+  }
+  .btn_ranking {
+    width: 100%;
+    height: 100%;
+    @include flex($j: center);
+    border: none;
+    color: #fff;
+    background: none;
+  }
+}
+
+//랭킹
+.ranking_box {
+  padding: 1rem;
+  .header {
+    @include flex();
+    font-weight: 700;
+    margin-bottom: 5px;
+    .num {
+      width: 50px;
+      flex-shrink: 0;
+      margin-right: 10px;
+      text-align: center;
+    }
+    .name {
+      flex: 1;
+    }
+    .date {
+      margin-left: auto;
+    }
+  }
+}
+.ranking_tab {
+  @include flex();
+  button {
+    border: none;
+    background: #fff;
+    flex: 1;
+    height: 45px;
+    border-bottom: 2px solid #ddd;
+    &.on {
+      border-block-color: $p-color;
+      font-weight: 700;
+    }
+  }
+}
+.ranking_list {
+  li {
+    @include flex();
+    .num {
+      width: 50px;
+      text-align: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-right: 10px;
+    }
+    .score {
+      margin-left: auto;
+    }
+    .date {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+  &.my {
+    .score {
+      margin-left: 0;
+    }
+    .date {
+      margin-left: auto;
+    }
+  }
+}
+
+//내정보
+.my_info {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  .top_info {
+    @include flex($j: space-between);
+    button {
+      @include flex();
+      padding: 0;
+      border: none;
+      background: none;
+      svg {
+        position: relative;
+        margin-right: 3px;
+        bottom: 1px;
+      }
+    }
+  }
+}
+
+//로그인화면
+.login_box {
+  @include flex($d: column, $j: center);
+  flex: 1;
+  height: 100vh;
+  padding-bottom: 30vh;
+  background-color: #fff;
+  .form_box {
+    width: 100%;
+    padding: 0 2rem;
+    max-width: 500px;
+  }
+  .ant-form-item {
+    width: 100%;
+  }
+  .tit {
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    opacity: 0;
+    animation: fadeIn 0.4s both;
+  }
+  .logo {
+    width: 70%;
+    text-align: center;
+    max-width: 400px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 0.4s both;
+  }
+  .btn_login {
+    border: 1px solid #ddd;
+    font-weight: bold;
+    height: 40px;
+    opacity: 0;
+    animation: fadeIn 0.4s 0.6s both;
+  }
+  .ant-btn {
+    border: none;
+  }
+  .ant-btn-primary {
+    background-color: $p-color;
+  }
+  .copy {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888;
+    font-size: 12px;
+  }
+  .btn_join {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    @include flex($j: center);
+    border: 1px solid #111;
+  }
+  .join_link {
+    a {
+      color: $p-color;
+    }
+    @include flex($j: flex-end);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+//설정
+.setting_form {
+  padding: 1rem;
+  .radio_box {
+    @include flex();
+  }
+  input[type="radio"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+    & + label {
+      flex: 1;
+      @include flex($j: center);
+      @include lastMr0($mg: 0.5rem);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      height: 35px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    }
+    &:checked + label {
+      background-color: $p-color;
+      border-color: $p-color;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+  input[type="range"] {
+    width: 100%;
+    margin-right: 5px;
+  }
+  .stting_btn_box {
+    margin-top: 30px;
+  }
+  .btn_submit {
+    width: 100%;
+    border: none;
+    background-color: $p-color;
+    color: #fff;
+    border-radius: 10px;
+    height: 42px;
+    margin-bottom: 10px;
+  }
+}
+
+//게임화면
+.play_box {
+  @include flex($j: center);
+  height: calc(var(--vh, 1vh) * 100);
+  position: relative;
+  .btn_exit {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    color: #111;
+  }
+  .playing {
+    width: 100%;
+    @include flex($d: column, $j: center);
+  }
+  .start_box {
+    width: 100%;
+    @include flex($d: column);
+  }
+  .btn_box {
+    @include flex($d: column);
+    width: 50%;
+    button {
+      border: none;
+      background: none;
+      width: 100%;
+      height: 40px;
+      border-radius: 10px;
+      background-color: $p-color;
+      color: #fff;
+      margin: 6px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    }
+  }
+  .card {
+    width: 30vw;
+    height: 40vw;
+    @include flex($j: center);
+    font-size: 30px;
+    border: 2px solid $p-color;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 1.6s both;
+  }
+  .ani_fade_in {
+    animation: fadeInCard 0.8s both;
+  }
+  .ani_fade_out {
+    animation: fadeOut 0.8s both;
+  }
+  .my_select {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    @include flex($j: space-between);
+    button {
+      width: 75px;
+      height: 75px;
+      border-radius: 10px;
+      background: none;
+      font-size: 20px;
+      position: relative;
+      border: 2px solid $p-color;
+      box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+      &:active {
+        background-color: #eee;
+        left: 4px;
+        top: 4px;
+        box-shadow: 0 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  .setting_list {
+    @include flex();
+    li {
+      margin: 0 7px;
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .result {
+    .tit {
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+    .list {
+      @include flex();
+      margin-left: 1px;
+      li {
+        border: 1px solid $p-color;
+        margin-left: -1px;
+        padding: 5px;
+      }
+    }
+    dl {
+      width: 120px;
+      @include flex($j: space-between);
+      margin-bottom: 0;
+      dd {
+        font-size: 20px;
+        color: $p-color;
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+    .btn_box {
+      width: 100%;
+      margin-top: 20px;
+    }
+    button {
+      margin-bottom: 10px;
+    }
+  }
+}
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.result {
+  @include flex($d: column);
+}
+
+.join-form-wrap {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 500px;
+}
+
+.join-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.join-form h1 {
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #4f6294;
+}
+
+.join-form p {
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.join-form p::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+.join-form input,
+.join-form select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.join-form input::placeholder {
+  color: #bbb;
+}
+
+.join-form label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.join-form button[type="submit"],
+.join-form input[type="submit"] {
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.join-form button[type="submit"]:active,
+.join-form input[type="button"]:active,
+.join-form input[type="submit"]:active {
+  transition: 0.3s all;
+  transform: translateY(3px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+.join-form input:disabled {
+  opacity: 0.4;
+}
+
+.join-form input[type="button"]:hover {
+  transition: 0.3s all;
+}
+
+.join-form button[type="submit"],
+.join-form input[type="button"],
+.join-form input[type="submit"] {
+  -webkit-appearance: none;
+}
+
+.join-form button[type="button"] {
+  display: block;
+  appearance: none;
+  background: #333;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.join-form hr {
+  margin-top: 30px;
+}
+
+.join-form button {
+  display: block;
+  appearance: none;
+  margin-top: 40px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.join-form p {
+  color: #111;
+}
+
+.join-form button[type="submit"],
+.join-form input[type="submit"] {
+  background-color: $p-color;
+}
+
+.join-form button[type="submit"]:hover,
+i.join-form nput[type="submit"]:hover {
+  background: #111;
+}
+
+.join-form-wrap .input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.join-form-wrap input {
+  outline-color: #111;
+}
+
+.join-form-wrap input + .place-holder {
+  line-height: 1;
+  margin: 0;
+  display: inline-block;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  padding: 0 4px;
+  color: #999;
+  transition: all 0.2s;
+}
+
+.join-form-wrap input:focus + .place-holder,
+.join-form-wrap input + .place-holder.on {
+  color: #111;
+  font-size: 12px;
+  top: -12px;
+  padding-bottom: 2px;
+  z-index: 10;
+}
+
+.join-form-wrap input:focus + .place-holder span,
+.join-form-wrap input + .place-holder.on span {
+  position: relative;
+  z-index: 2;
+}
+
+.join-form-wrap input:focus + .place-holder::after,
+.join-form-wrap input + .place-holder.on::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #fff;
+  left: 0;
+  bottom: 0;
+}
+
+.join-form-wrap .radio .custom-radio {
+  width: 0;
+  height: 0;
+}
+
+.join-form-wrap .radio .custom-radio + label {
+  color: #666;
+  height: 44px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  flex: 1;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 5px;
+}
+
+.join-form-wrap .radio .custom-radio + label:last-child {
+  margin-right: 0;
+}
+
+.join-form-wrap .radio .custom-radio:checked + label {
+  background-color: #111;
+  color: #fff;
+  border-color: #111;
+  font-weight: 600;
+}
+
+.join-form-wrap .btn_login {
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #111;
+  color: #333;
+  width: 100%;
+  display: block;
+  text-align: center;
+  border-radius: 4px;
+}

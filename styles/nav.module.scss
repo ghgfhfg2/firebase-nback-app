@@ -1,0 +1,48 @@
+.nav-box {
+  width: 200px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  background: #fff;
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  transform: translateX(-100%);
+  left: 0;
+  top: 0;
+  transition: 0.2s;
+  .btn-close {
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    transform: translateX(100%);
+    svg {
+      font-size: 18px;
+      color: #fff;
+    }
+  }
+
+  &.on {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 100;
+  }
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  &.on {
+    opacity: 1;
+    z-index: 10;
+  }
+}
