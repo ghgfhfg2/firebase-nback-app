@@ -19,8 +19,8 @@ function Setting() {
   } = useForm({
     defaultValues: {
       nback: gameSet ? String(gameSet.nback) : "2",
-      speed: gameSet ? String(gameSet.speed) : "1000",
-      count: gameSet ? String(gameSet.count) : "5",
+      speed: gameSet ? String(gameSet.speed) : "1500",
+      count: gameSet ? String(gameSet.count) : "10",
     },
   });
   const onSubmit = (data) => {
@@ -68,14 +68,14 @@ function Setting() {
             {...register("speed", { required: true })}
             type="radio"
             id="speed_1"
-            value={3000}
+            value={2000}
           />
           <label htmlFor="speed_1">느림</label>
           <input
             {...register("speed", { required: true })}
             type="radio"
             id="speed_2"
-            value={2000}
+            value={1500}
           />
           <label htmlFor="speed_2">보통</label>
           <input

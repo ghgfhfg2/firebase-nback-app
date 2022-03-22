@@ -19,7 +19,7 @@ function Play_ranking() {
   const cardRef = useRef();
   const nextTime = gameSet.speed;
   const backNum = gameSet.nback;
-  const score = gameSet.speed === 1000 ? 1.4 : gameSet.speed === 2000 ? 1.2 : 1;
+  const score = gameSet.speed === 1000 ? 1.4 : gameSet.speed === 1500 ? 1.2 : 1;
 
   const [play, setPlay] = useState(false);
   const [finish, setFinish] = useState(false);
@@ -212,7 +212,7 @@ function Play_ranking() {
                       <SiSpeedtest />
                       {nextTime === 1000
                         ? "빠름"
-                        : nextTime === 2000
+                        : nextTime === 1500
                         ? "보통"
                         : "느림"}
                     </li>

@@ -184,7 +184,7 @@ function Play() {
                       <SiSpeedtest />
                       {gameSet.speed === 1000
                         ? "빠름"
-                        : gameSet.speed === 2000
+                        : gameSet.speed === 1500
                         ? "보통"
                         : "느림"}
                     </li>
