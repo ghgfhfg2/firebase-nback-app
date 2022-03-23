@@ -29,7 +29,7 @@ function Setting() {
     data.speed = parseInt(data.speed);
     data.count = parseInt(data.count);
     dispatch(setGame(data));
-    router.push("/play");
+    router.back();
   };
 
   const watchAllFields = watch();
